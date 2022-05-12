@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>ERD Editor</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <erd-editor automatic-layout></erd-editor>
+    <script src="https://cdn.jsdelivr.net/npm/vuerd/dist/vuerd.min.js"></script>
+    <script>
+      const editor = document.querySelector("erd-editor");
+
+      fetch("https://api.github.com/repos/vuerd/vuerd/contents/data/test.json")
+        .then((response) => response.json())
+        .then((data) => editor.initLoadJson(atob(data.content)));
+    </script>
+  </body>
+</html>
